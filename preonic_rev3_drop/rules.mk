@@ -1,0 +1,3 @@
+SRC += muse.c
+BOOTMAGIC_ENABLE = no
+RGBLIGHT_ENABLE = no
