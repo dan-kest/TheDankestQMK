@@ -6,7 +6,6 @@ enum preonic_layers {
     _LEFT,
     _RIGHT,
     _BOTH,
-    _MOUSE,
     _WHEEL,
 };
 
@@ -14,7 +13,7 @@ enum preonic_layers {
 #define MO_LEFT MO(_LEFT)
 #define MO_RGHT MO(_RIGHT)
 #define MO_BOTH MO(_BOTH)
-#define MO_MOUS MO(_MOUSE)
+#define TT_BOTH TT(_BOTH)
 #define MO_WHEL MO(_WHEEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -29,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  GUI |  Del |  Alt |_LEFT |    Space    |_RGHT |_MOUS | Left | Down |Right |
+ * | Ctrl |  Del |  GUI |  Alt |_LEFT |    Space    |_RGHT |_BOTH | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_BASE] = LAYOUT_preonic_1x2uC(
@@ -37,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
     TT_NUMP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
-    KC_LCTL, KC_LGUI, KC_DEL,  KC_LALT, MO_LEFT,      KC_SPC,      MO_RGHT, MO_MOUS, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_LCTL, KC_DEL,  KC_LGUI, KC_LALT, MO_LEFT,      KC_SPC,      MO_RGHT, TT_BOTH, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Numpad
@@ -46,9 +45,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |Num 7 |Num 8 |Num 9 |Num + |
  * |------+------+------+------+------+------+------+------+--- --+--- --+--- --+--- --|
- * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |Num 4 |Num 5 |Num 6 |Num , |
+ * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |Num 4 |Num 5 |Num 6 |   ,  |
  * |------+------+------+------+------+------+------+------+--- --+--- --+--- --+--- --|
- * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |Num 1 |Num 2 |Num 3 |Num = |
+ * | ____ | ____ | ____ | ____ | ____ | ____ | ____ | ____ |Num 1 |Num 2 |Num 3 |   =  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | ____ | ____ | ____ | ____ | ____ |     ____    | ____ | ____ |Num 0 |Num . |NumEn |
  * `-----------------------------------------------------------------------------------'
@@ -56,8 +55,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NUMPAD] = LAYOUT_preonic_1x2uC(
     _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_P4,   KC_P5,   KC_P6,   KC_PCMM,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_P1,   KC_P2,   KC_P3,   KC_PEQL,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_P4,   KC_P5,   KC_P6,   KC_COMM,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_P1,   KC_P2,   KC_P3,   KC_EQL,
     _______, _______, _______, _______, _______,      _______,     _______, _______, KC_P0,   KC_PDOT, KC_PENT
 ),
 
@@ -90,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |  Del |  End | PgDn | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      | ____ | ____ | ____ | ____ |
+ * | ____ | ____ | ____ | ____ | ____ | ____ | ____ |      |      |      | ____ | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | ____ | ____ | ____ | ____ |_BOTH |     ____    | ____ | ____ | ____ | ____ | ____ |
  * `-----------------------------------------------------------------------------------'
@@ -99,50 +98,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, _______,
     _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_INS,  KC_HOME, KC_PGUP, _______,
     _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_DEL,  KC_END,  KC_PGDN, _______,
-    _______, _______, _______, _______, _______, _______, _______, XXXXXXX, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
     _______, _______, _______, _______, MO_BOTH,      _______,     _______, _______, _______, _______, _______
 ),
 
 /* Both
  * ,-----------------------------------------------------------------------------------.
- * | ____ |      |      |      |      |Reset |      |      |      |      |      | ____ |
+ * |  Esc |  Win |  Mac |      |      |Reset |      |      |      |GUIof |GUIon | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |      |      |      |      |      |      |      |      |      |      | ____ |
+ * | ____ |      |      | M Up |      |      |      |MBtn3 |MBtn3 |MBtn5 |      | Stop |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |      |      |      |      |      |      |      |      |      |      | ____ |
+ * |      |_WHEL |MLeft |MDown |MRght |      |      |MBtn1 |MBtn2 |MBtn4 |      | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |      |      |      |      |      |      |      |      |      | ____ | ____ |
+ * | ____ |_WHEL |      |      |      |      |MAcc2 |MAcc1 |MAcc0 | Play | Prev | Next |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ | ____ | ____ | ____ | ____ |     ____    | ____ | ____ | ____ | ____ | ____ |
+ * | ____ | ____ | ____ | ____ | ____ |     ____    | ____ | ____ | Mute | Vol- | Vol+ |
  * `-----------------------------------------------------------------------------------'
  */
 [_BOTH] = LAYOUT_preonic_1x2uC(
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
-    _______, _______, _______, _______, _______,      _______,     _______, _______, _______, _______, _______
-),
-
-/* Mouse
- * ,-----------------------------------------------------------------------------------.
- * |  Esc |      |      |      |      |      |      |      |PrtSc |ScrLk |Pause | ____ |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |      |      | M Up |      |      |MBtn4 |MBtn3 |MBtn3 | Home | PgUp | Stop |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |MLeft |MDown |MRght |      |MBtn5 |MBtn1 |MBtn2 |  End | PgDn | ____ |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |_WHEL |      |MAcc2 |MAcc1 |MAcc0 |MAcc0 |MAcc1 |MAcc2 | Play | Prev | Next |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ | ____ | ____ | ____ |      |     ____    |      | ____ | Mute | Vol- | Vol+ |
- * `-----------------------------------------------------------------------------------'
- */
-[_MOUSE] = LAYOUT_preonic_1x2uC(
-    KC_ESC,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, KC_SLCK, KC_PAUS, _______,
-    _______, XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN3, KC_BTN3, KC_HOME, KC_PGUP, KC_MSTP,
-    XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, KC_BTN5, KC_BTN1, KC_BTN2, KC_END,  KC_PGDN, _______,
-    _______, MO_WHEL, XXXXXXX, KC_ACL2, KC_ACL1, KC_ACL0, KC_ACL0, KC_ACL1, KC_ACL2, KC_MPLY, KC_MPRV, KC_MNXT,
-    _______, _______, _______, _______, XXXXXXX,      _______,     XXXXXXX, _______, KC_MUTE, KC_VOLD, KC_VOLU
+    KC_ESC,  AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, GUI_OFF, GUI_ON,  _______,
+    _______, XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN3, KC_BTN5, XXXXXXX, KC_MSTP,
+    XXXXXXX, MO_WHEL, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, XXXXXXX, KC_BTN1, KC_BTN2, KC_BTN4, XXXXXXX, _______,
+    _______, MO_WHEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ACL2, KC_ACL1, KC_ACL0, KC_MPLY, KC_MPRV, KC_MNXT,
+    _______, _______, _______, _______, _______,      _______,     _______, _______, KC_MUTE, KC_VOLD, KC_VOLU
 ),
 
 /* Mouse Wheel
