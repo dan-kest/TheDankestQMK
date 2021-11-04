@@ -19,6 +19,8 @@ enum preonic_keycodes {
     FN_ENTR,
 };
 
+#define RS_SLSH RSFT_T(KC_SLSH)
+
 /* Layer Map
  *               DFULT
  *           ┌─────┼─────┬─────┐
@@ -44,16 +46,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |_NUMP |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
+ * |LShft |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl |  Del |  GUI |  Alt |_LOWR |    Space    |_RAIS |_FUNC | Left | Down |Right |
+ * |LCtrl |  Del | LGUI | LAlt |_LOWR |    Space    |_RAIS |_FUNC | Left | Down |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_DEFAULT] = LAYOUT_preonic_1x2uC(
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
     TT_NUMP, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   KC_SLSH,
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   RS_SLSH,
     KC_LCTL, KC_DEL,  KC_LGUI, KC_LALT, L_LOWER,      KC_SPC,      L_RAISE, MO_FUNC, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
@@ -149,17 +151,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | Play | Prev | Next |      |FnEnt |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |      |      |      |      |      |      | Mute | Vol- | Vol+ |      |      |
+ * |RShft |      |      |      |      |      |      | Mute | Vol- | Vol+ |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |             |      | _MO_ |      |      |      |
+ * |RCtrl |      | RGUI | RAlt |      |             |      | _MO_ |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_FUNCTION] = LAYOUT_preonic_1x2uC(
     XXXXXXX, AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX, RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, FN_BACK,
     XXXXXXX, GUI_ON,  GUI_OFF, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MSTP, KC_MRWD, KC_MFFD, XXXXXXX, XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MPLY, KC_MPRV, KC_MNXT, XXXXXXX, FN_ENTR,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,     XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX
+    KC_RSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,
+    KC_RCTL, XXXXXXX, KC_RGUI, KC_RALT, XXXXXXX,      XXXXXXX,     XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
 };
