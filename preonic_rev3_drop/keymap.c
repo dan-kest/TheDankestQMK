@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |  Tab |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  |   \  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   M  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
+ * | Home |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |LShft |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |  Up  |   /  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -35,29 +35,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DEFAULT] = LAYOUT_preonic_1x2uC(
     KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-    KC_M,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
+    KC_HOME, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_UP,   RS_SLSH,
     KC_LCTL, KC_DEL,  KC_LGUI, KC_LALT, L_LOWER,      KC_SPC,      L_RAISE, MO_FUNC, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
 /* Lower
  * ,-----------------------------------------------------------------------------------.
- * |   `  |  F1  |  F2  |  F3  |  F4  |  F17 |  F21 |      |      |   -  |   =  | ____ |
+ * |   `  |  F1  |  F2  |  F3  |  F4  |  F5  |  F9  |  F13 |  F17 |   -  |   =  | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |  F5  |  F6  |  F7  |  F8  |  F18 |  F22 |      |  Up  |   [  |   ]  | ____ |
+ * | ____ |   Y  |   U  |   I  |   O  |  F6  |  F10 |  F14 |  F18 |   [  |   ]  | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Caps |  F9  |  F10 |  F11 |  F12 |  F19 |  F23 | Left | Down |Right |   '  | ____ |
+ * | Caps |   H  |   J  |   K  |   L  |  F7  |  F11 |  F15 |  F19 |      |   '  | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | ____ |  F13 |  F14 |  F15 |  F16 |  F20 |  F24 |      |      |      | ____ | ____ |
+ * | ____ |   N  |   M  |   ,  |   .  |  F8  |  F12 |  F16 |  F20 |      | ____ | ____ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | ____ | ____ | ____ | ____ | _3L_ |     ____    |_ADJS | ____ | ____ | ____ | ____ |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_1x2uC(
-    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F17,  KC_F21,  XXXXXXX, XXXXXXX, KC_MINS, KC_EQL,  _______,
-    _______, KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F18,  KC_F22,  XXXXXXX, KC_UP,   KC_LBRC, KC_RBRC, _______,
-    KC_CAPS, KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_F19,  KC_F23,  KC_LEFT, KC_DOWN, KC_RGHT, KC_QUOT, _______,
-    _______, KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F20,  KC_F24,  XXXXXXX, XXXXXXX, XXXXXXX, _______, _______,
+    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F9,   KC_F13,  KC_F17,  KC_MINS, KC_EQL,  _______,
+    _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_F6,   KC_F10,  KC_F14,  KC_F18,  KC_LBRC, KC_RBRC, _______,
+    KC_CAPS, KC_H,    KC_J,    KC_K,    KC_L,    KC_F7,   KC_F11,  KC_F15,  KC_F19,  XXXXXXX, KC_QUOT, _______,
+    _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_F8,   KC_F12,  KC_F16,  KC_F20,  XXXXXXX, _______, _______,
     _______, _______, _______, _______, _______,      _______,     _______, _______, _______, _______, _______
 ),
 
